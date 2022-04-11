@@ -16,7 +16,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-
+      - uses: actions/setup-python@v1
+      - uses: BSFishy/meson-build@v1.0.3
+        with:
+          options: --verbose
+          action: test
       - name: Build wheels
         uses: pypa/cibuildwheel@v2.4.0
         env:
