@@ -23,7 +23,7 @@ jobs:
             CIBW_REPAIR_WHEEL_COMMAND_LINUX: ""
             # Disable building PyPy wheels on all platforms
             # Disable builds on musllinux
-            CIBW_SKIP: "*-musllinux_* pp*"
+            CIBW_SKIP: "*-musllinux_* pp* *i686"
             CIBW_BUILD_VERBOSITY: 1
       - uses: actions/upload-artifact@v3
         with:
