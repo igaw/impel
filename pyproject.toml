@@ -18,3 +18,9 @@ home-page = "https://github.com/igaw/libimpel"
 license="GPL-2.0-only"
 requires-python=">=3.9"
 summary="Python bindings for libimpel"
+
+[tool.cibuildwheel]
+test-extras = "test"
+test-command = "pytest {project}/tests"
+# Optional
+build-verbosity = 1
