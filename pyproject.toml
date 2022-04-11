@@ -1,7 +1,7 @@
 [build-system]
 requires = ["mesonpep517", "wheel", "meson==0.61.2", "ninja"] # PEP 508 specifications.
 build-backend = "mesonpep517.buildapi"
-backend-path = "dest"
+backend-path = [ "dest" ]
 meson-options = "--libdir=dest"
 
 [tool.mesonpep517.metadata]
