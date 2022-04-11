@@ -20,6 +20,7 @@ jobs:
         with:
           setup-options: -Dpython=false
           options: --verbose
+
       - name: Build wheels
         uses: pypa/cibuildwheel@v2.4.0
         env:
@@ -27,6 +28,7 @@ jobs:
             # Disable builds on musllinux
             CIBW_SKIP: "*-musllinux_* pp*"
             CIBW_BUILD_VERBOSITY: 1
+
       - uses: actions/upload-artifact@v3
         with:
           path: wheelhouse/*.whl
