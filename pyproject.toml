@@ -1,10 +1,8 @@
 [build-system]
-requires = ["mesonpep517", "wheel", "meson==0.61.2", "ninja"] # PEP 508 specifications.
-build-backend = "mesonpep517.buildapi"
-backend-path = [ "dest" ]
-meson-options = "--libdir=dest"
+requires = ["mesonpy", "wheel", "meson==0.61.2", "ninja"] # PEP 508 specifications.
+build-backend = "mesonpy"
 
-[tool.mesonpep517.metadata]
+[project]
 author="Daniel Wagner"
 author-email="dwagner@suse.de"
 classifiers = [
