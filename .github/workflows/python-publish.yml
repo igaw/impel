@@ -14,16 +14,16 @@ jobs:
   build_wheels:
     name: Build wheels manylinux
     runs-on: ubuntu-latest
-    steps:
       - uses: actions/checkout@v3
 
       - name: Build wheels
         uses: pypa/cibuildwheel@v2.4.0
         env:
             CIBW_REPAIR_WHEEL_COMMAND_LINUX: ""
-            CIBW_SKIP: "*-musllinux_*"
+            # Disable building PyPy wheels on all platforms
+            # Disable builds on musllinux
+            CIBW_SKIP: "*-musllinux_* pp*"
             CIBW_BUILD_VERBOSITY: 1
-
       - uses: actions/upload-artifact@v3
         with:
           path: wheelhouse/*.whl
