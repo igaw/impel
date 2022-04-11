@@ -17,14 +17,17 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      # - name: Build wheels
+      #   uses: pypa/cibuildwheel@v2.4.0
+      #   env:
+      #       CIBW_REPAIR_WHEEL_COMMAND_LINUX: ""
+      #       # Disable building PyPy wheels on all platforms
+      #       # Disable builds on musllinux
+      #       CIBW_SKIP: "*-musllinux_* pp*"
+      #       CIBW_BUILD_VERBOSITY: 1
       - name: Build wheels
-        uses: pypa/cibuildwheel@v2.4.0
-        env:
-            CIBW_REPAIR_WHEEL_COMMAND_LINUX: ""
-            # Disable building PyPy wheels on all platforms
-            # Disable builds on musllinux
-            CIBW_SKIP: "*-musllinux_* pp*"
-            CIBW_BUILD_VERBOSITY: 1
+        run: pipx run cibuildwheel==2.4.0
+
       - uses: actions/upload-artifact@v3
         with:
           path: wheelhouse/*.whl
