@@ -11,24 +11,24 @@ on:
   workflow_dispatch:
 
 jobs:
-  build_wheels:
-    name: Build wheels manylinux
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
+  # build_wheels:
+  #   name: Build wheels manylinux
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v3
 
-      - name: Build wheels
-        uses: pypa/cibuildwheel@v2.4.0
-        env:
-            # Disable building PyPy wheels on all platforms
-            # Disable builds on musllinux
-            CIBW_SKIP: "*-musllinux_* pp*"
-            CIBW_BUILD_VERBOSITY: 1
+  #     - name: Build wheels
+  #       uses: pypa/cibuildwheel@v2.4.0
+  #       env:
+  #           # Disable building PyPy wheels on all platforms
+  #           # Disable builds on musllinux
+  #           CIBW_SKIP: "*-musllinux_* pp*"
+  #           CIBW_BUILD_VERBOSITY: 1
 
-      - uses: actions/upload-artifact@v3
-        with:
-          path: wheelhouse/*.whl
-          retention-days: 5
+  #     - uses: actions/upload-artifact@v3
+  #       with:
+  #         path: wheelhouse/*.whl
+  #         retention-days: 5
 
   build_sdist:
     name: Build source distribution
@@ -45,7 +45,8 @@ jobs:
           retention-days: 5
 
   upload_pypi:
-    needs: [build_wheels, build_sdist]
+    #needs: [build_wheels, build_sdist]
+    needs: [build_sdist]
     runs-on: ubuntu-latest
     #if: startsWith(github.ref, 'refs/tags/v')
     steps:

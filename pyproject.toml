@@ -1,6 +1,5 @@
 [build-system]
-requires = ["mesonpy", "wheel", "meson==0.61.2", "ninja"] # PEP 508 specifications.
-build-backend = "mesonpy"
+requires = ["meson", "ninja"]
 
 [project]
 author="Daniel Wagner"
